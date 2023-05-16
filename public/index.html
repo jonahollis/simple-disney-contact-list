@@ -56,8 +56,12 @@
               </button>
           </li>
         </ul>
+        <input type="text" ng-model="name">
+        <!-- View name in real time -->
+        <!-- <h3>{{name}}</h3> -->
+        <button ng-click="addContact(index)">Add Name</button>
 
-        <table class="table">
+        <table class="table mt-5">
           <thead>
               <tr>
                 <th>Movie Image</th>
@@ -74,12 +78,12 @@
                 <td>{{character.movieYear}}</td>
               </tr>
           </tbody>
-      </table>
+        </table>
 
-        <input type="text" ng-model="name">
+        <input type="text" ng-model="nameObj">
         <!-- View name in real time -->
         <!-- <h3>{{name}}</h3> -->
-        <button ng-click="addContact(index)">Add Name</button>
+        <button ng-click="addContactObjs(index, name)">Add Name</button>
       </div>
     </div>
     

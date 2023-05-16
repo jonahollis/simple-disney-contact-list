@@ -40,13 +40,13 @@ app.controller("contactsCtrl", function($scope){
             name: "Moana",
             movie: "Moana",
             movieYear: "2016",
-            imageUrl: "",
+            imageUrl: "https://m.media-amazon.com/images/I/A1JOaV3B6fL._AC_SY879_.jpg",
         }, 
         { 
             name: "Ariel",
             movie: "The Little Mermaid",
             movieYear: "1989",
-            imageUrl: "",
+            imageUrl: "https://m.media-amazon.com/images/I/71VV1OFO4JL._AC_SY879_.jpg",
         },
     ];
 
@@ -55,6 +55,12 @@ app.controller("contactsCtrl", function($scope){
 
     $scope.addContact = function () {
         $scope.contacts.push($scope.name)
+
+    };
+
+    $scope.addContactObjs = function () {
+        $scope.contactObjs.push($scope.name)
+        
     };
 
     $scope.deleteContact = function (index) {
