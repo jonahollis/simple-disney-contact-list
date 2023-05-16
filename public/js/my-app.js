@@ -67,7 +67,7 @@ app.controller("listCtrl", function($scope, $http){
 
         console.log("Deleting an item");
         $http({
-            method: "DELETE",
+            method: "POST",
             url: "/api/list/delete",
             data: JSON.stringify( {item: $scope.item} ),
         })

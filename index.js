@@ -12,7 +12,26 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-let list = ["Bugs Bunny", "Tweety bird"];
+let list = [
+  { 
+      name: "Simba",
+      movie: "The Lion King",
+      movieYear: "1994",
+      imageUrl: "https://resizing.flixster.com/-9O860xiuHUyNtotR_JtUrGqU3I=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2FiZWI5MTcwLWE0ZTctNGQyNy05NWJlLTM3MzMxMTliZDlhNS53ZWJw",
+  }, 
+  { 
+      name: "Moana",
+      movie: "Moana",
+      movieYear: "2016",
+      imageUrl: "https://m.media-amazon.com/images/I/A1JOaV3B6fL._AC_SY879_.jpg",
+  }, 
+  { 
+      name: "Ariel",
+      movie: "The Little Mermaid",
+      movieYear: "1989",
+      imageUrl: "https://m.media-amazon.com/images/I/71VV1OFO4JL._AC_SY879_.jpg",
+  },
+];
 
 app.get("/api/list", (req, res) => {
 
@@ -39,8 +58,9 @@ app.post("/api/list/add", (req, res) => {
 
 app.post("/api/list/delete", (req, res) => {
   console.log(req.body);
-
-
+  
+  // list = req.body.list;
+  // res.json(list);
 
   
 })
