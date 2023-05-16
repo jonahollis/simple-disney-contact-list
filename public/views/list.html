@@ -1,0 +1,8 @@
+<p>List: {{message}}</p>
+
+<ul style="list-style-type: none;">
+    <li ng-repeat="(index, item) in list" class="my-2">{{$index}} ) {{item}} <button ng-click="deleteItem(index)" class="btn btn-danger btn-sm">Delete</button></li>
+</ul>
+
+<input type="text" ng-model="item" />
+<button ng-click="addItem()">Add Item</button>

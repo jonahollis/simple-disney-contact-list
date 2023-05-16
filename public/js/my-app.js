@@ -12,6 +12,10 @@ app.config([
                 templateUrl: 'views/main.html',
                 controller: 'indexCtrl2',
             })
+            .when('/list', {
+                templateUrl: 'views/list.html',
+                controller: 'listCtrl',
+            })
             .otherwise({
                 template: '<span>This is Otherwise!</span>',
             });
@@ -24,6 +28,58 @@ app.controller("indexCtrl", function($scope){
 
 app.controller("indexCtrl2", function($scope){
     $scope.message = 'indexCtrl2 Message!';
+})
+
+app.controller("listCtrl", function($scope, $http){
+    $scope.message = 'listCtrl Message!';
+    $scope.list = [];
+    $scope.item = "";
+
+    $http.get("api/list")
+    .then(res => {
+        console.log(res)
+        $scope.list = res.data;
+    })
+    .catch (err => {
+        console.log(err)
+    })
+
+    $scope.addItem = function () {
+        console.log("Adding an item");
+        $http({
+            method: "POST",
+            url: "/api/list/add",
+            data: JSON.stringify( {item: $scope.item} ),
+        })
+        .then((res) => {
+            $scope.list = res.data;
+            $scope.item = "";
+        })
+        .catch((err) => {
+            console.log("Error Occurred");
+            console.log(err);
+        })
+    }
+
+    $scope.deleteItem = function (index) {
+
+        $scope.list.splice(index, 1)
+
+        console.log("Deleting an item");
+        $http({
+            method: "DELETE",
+            url: "/api/list/delete",
+            data: JSON.stringify( {item: $scope.item} ),
+        })
+        .then((res) => {
+            $scope.list = res.data;
+            $scope.item = "";
+        })
+        .catch((err) => {
+            console.log("Error Occurred");
+            console.log(err);
+        })
+    }
 })
 
 app.controller("contactsCtrl", function($scope){
@@ -75,5 +131,3 @@ app.controller("contactsCtrl", function($scope){
     //     })
     // }
 })
-
-
